@@ -1,0 +1,13 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+}
+img{
+  height: 200px;
+}
+.message {
+  list-style: none;
+}
+.itemName {
+  display: block;
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <title>Add to your Life</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <!-- <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+
+            </div>
+        </div> -->
+
+        <h2>Add an item</h2>
+        <% if (user.local.email) { %>
+          <form action="/messages" method="POST">
+            <input type="text" placeholder="name of item" name="name">
+            <div>
+              <label for="date-bought">Date Bought</label>
+              <input type="date" class="form-control" name="dateBought" required>
+            </div>
+            <div>
+              <label for="expiration-date">Expiration Date</label>
+              <input type="date" class="form-control" name="expirationDate" required>
+            </div>
+            <input type="text" placeholder="note" name="msg">
+            <input type="text" placeholder="cost" name="price">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %>
+
+        <div class="col-sm-6">
+          <h3>Grocery Tracking</h3>
+          <ul class="messages">
+          <% for(var i=0; i<messages.length; i++) {%>
+            <li class="message">
+              <span class="itemName"><%= messages[i].name %></span>
+              <span class="dateBought"><%= messages[i].dateBought %></span>
+              <span class="expirationDate"><%= messages[i].expirationDate %></span>
+              <span class="msg"><%= messages[i].msg %></span>
+              <span class="price"><%= messages[i].price %></span>
+              <span class="thumbUpLi"><%= messages[i].thumbUp %></span>
+              <span><button class="fa fa-thumbs-up" aria-hidden="true">Increase Quantity</button></span>
+              <span><button class="fa fa-thumbs-down" aria-hidden="true">Decrease Quantity</button></span>
+              <span><button class="fa fa-trash" aria-hidden="true">Delete</button></span>
+            </li>
+          <% } %>
+          </ul>
+
+          <!-- <h2>Add an item</h2>
+        <% if (user.local.email) { %>
+          <form action="/messages" method="POST">
+            <input type="text" placeholder="name of item" name="name">
+            <div>
+              <label for="date-bought">Date Bought</label>
+              <input type="date" class="form-control" name="dateBought" required>
+            </div>
+            <div>
+              <label for="expiration-date">Expiration Date</label>
+              <input type="date" class="form-control" name="expirationDate" required>
+            </div>
+            <input type="text" placeholder="message" name="msg">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %> -->
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
